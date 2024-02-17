@@ -1,0 +1,31 @@
+Proje Adı: Etkileşimli Öğrenme Platformu
+
+Amaç:
+Kullanıcılara interaktif bir öğrenme deneyimi sunan bir platform geliştirmek.
+
+Gereksinimler:
+
+1.Aşama:
+Ders İçeriği Yönetimi: Yöneticilerin ders içeriklerini ekleyebilmesi, güncelleyebilmesi ve sınıflandırabilmesi.
+Kullanıcı Yönetimi: Öğrencilerin kaydolabilmesi, öğretmenlerin ve yöneticilerin hesaplarını yönetebilmesi.
+Etkileşimli Ders Materyalleri: Canlı dersler, video dersler, interaktif öğrenme materyalleri gibi çeşitli öğrenme kaynaklarına erişim.
+Sınav ve Değerlendirme Modülü: Otomatik sınav oluşturma, öğrenci performansını izleme ve değerlendirme imksanı.
+Forum ve Tartışma Alanı: Öğrencilerin ve öğretmenlerin birbirleriyle etkileşimde bulunabileceği bir forum veya tartışma platformu.
+İlerleme İzleme: Öğrencilerin derslerdeki ilerlemelerini takip edebileceği bir öğrenci paneli.
+İlave İstekler:
+
+
+2.Aşama:
+Adaptif Öğrenme Algoritmaları: Öğrencinin güçlü ve zayıf yönlerini belirleyerek kişiye özel öğrenme yolları sunabilme.
+Canlı Sınıf İmkanı: Öğretmenlerin öğrencilere canlı dersler veya soru-cevap seansları düzenleyebilmesi.
+Mobil Desteği: Platformun mobil cihazlardan kolayca erişilebilir olması.
+Teslimat:
+Hazır olan platformun demo sürümü ve belirtilen özelliklerin kullanımını anlatan bir dökümantasyon.
+
+
+1.Aşama kullanılacak teknoljiler:
+# Multi Tenancy
+# golang 
+# fiber
+# postgresql
+
