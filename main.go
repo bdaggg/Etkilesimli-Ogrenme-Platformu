@@ -2,6 +2,7 @@ package main
 
 import (
 	"EOP/database"
+	"EOP/router"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,6 +10,7 @@ import (
 func main() {
 	database.Connect()
 	app := fiber.New()
-	app.Listen(":3000")
+	router.Auth(app)
 
+	app.Listen(":3000")
 }
