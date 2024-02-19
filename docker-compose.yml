@@ -12,17 +12,17 @@ services:
     networks:
       - appnetwork
 
-  go-app:
-    build: .
-    command: go run main.go
-    volumes:
-      - .:/EOP
-    ports:
-      - "3000:3000"
-    depends_on:
-      - postgres
-    networks:
-      - appnetwork
+  #go-app:
+  # build: .
+  #  command: go run main.go
+  #  volumes:
+  #    - .:/EOP
+  #  ports:
+  #    - "3000:3000"
+  #  depends_on:
+  #    - postgres
+  #  networks:
+  #    - appnetwork
 
 volumes:
   postgre_data:

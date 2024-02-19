@@ -11,6 +11,7 @@ func main() {
 	database.Connect()
 	app := fiber.New()
 	router.Auth(app)
+	
 
 	app.Listen(":3000")
 }

@@ -20,3 +20,7 @@ type Login struct {
 	UserName string `json:"user_name,omitempty"`
 	Password string `json:"password,omitempty"`
 }
+
+type Update struct {
+	Token string `json:"token"`
+}
