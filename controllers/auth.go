@@ -3,6 +3,7 @@ package controllers
 import (
 	"EOP/database"
 	"EOP/helpers"
+	"EOP/middleware"
 	"EOP/model"
 	"log"
 
@@ -44,7 +45,23 @@ func Login(c *fiber.Ctx) error {
 	c.BodyParser(&logindata)
 	err := db.Where("user_name = ? and password = ?", logindata.UserName, logindata.Password).First(&userdata).Error
 	if err != nil {
-		return c.Status(400).JSON(fiber.Map{"status": "success", "message": "faild login"})
+		return c.Status(400).JSON(fiber.Map{"status": "faild", "message": "faild login"})
 	}
-	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "login success", "data": userdata})
+
+	token, err := middleware.CreateToken(userdata.UserName)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).SendString("Token oluşturulamadı")
+	}
+
+	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "login success", "data": userdata, "token": token})
+}
+
+func Update(c *fiber.Ctx) error {
+	token := new(model.Update)
+	c.BodyParser(&token)
+	username, err := middleware.ExtractUsernameFromToken(token.Token)
+	if err != nil {
+		return c.Status(200).JSON(fiber.Map{"status": "faild", "message": "faild token", "data": err})
+	}
+	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "token success", "data": username})
 }

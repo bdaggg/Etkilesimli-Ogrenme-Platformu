@@ -2,7 +2,6 @@ package router
 
 import (
 	"EOP/controllers"
-	"EOP/middleware"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -13,6 +12,7 @@ func Auth(app *fiber.App) {
 	user := v1.Group("/user")
 
 	user.Post("/", controllers.Singup)
-	user.Post("/login", controllers.Login, middleware.DeserializeUser)
+	user.Post("/login", controllers.Login)
+	user.Post("/update", controllers.Update)
 
 }
