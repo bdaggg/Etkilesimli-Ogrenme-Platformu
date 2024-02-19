@@ -16,7 +16,6 @@ func Singup(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "server error was able to body parse try again ", "data": err})
 	}
-	//log.Println(reflect.TypeOf(user.Name))
 	// username controll
 	err = helpers.Username_controll(user.UserName)
 	if err == nil {
@@ -36,4 +35,16 @@ func Singup(c *fiber.Ctx) error {
 	}
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "user created", "data": user})
 
+}
+
+func Login(c *fiber.Ctx) error {
+	logindata := new(model.Login)
+	userdata := new(model.User)
+	db := database.DB.Db
+	c.BodyParser(&logindata)
+	err := db.Where("user_name = ? and password = ?", logindata.UserName, logindata.Password).First(&userdata).Error
+	if err != nil {
+		return c.Status(400).JSON(fiber.Map{"status": "success", "message": "faild login"})
+	}
+	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "login success", "data": userdata})
 }
