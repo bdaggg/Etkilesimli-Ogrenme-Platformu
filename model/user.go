@@ -6,7 +6,7 @@ import (
 
 type User struct {
 	gorm.Model
-	UserID   uint   `gorm:"primaryKey;autoIncrement`
+	UserID   int    `gorm:"primaryKey;autoIncrement"`
 	Role     string `json:"role,omitempty"`
 	Name     string `json:"name,omitempty"`
 	Surname  string `json:"surname,omitempty"`
