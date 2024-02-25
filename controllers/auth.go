@@ -62,7 +62,11 @@ func Login(c *fiber.Ctx) error {
 }
 
 func Update(c *fiber.Ctx) error {
-	
+	user, err := middleware.TokenControl(c)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "data": err})
+	}
+	log.Println(user)
 
-	return nil
+	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "procces success", "data": user})
 }
