@@ -53,7 +53,12 @@ func Login(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).SendString("Token oluşturulamadı")
 	}
 
+	session := new(model.Session)
+	session.UserID = userdata.UserID
+	session.Token = token
+	db.Save(&session)
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "login success", "data": userdata, "token": token})
+
 }
 
 func Update(c *fiber.Ctx) error {
