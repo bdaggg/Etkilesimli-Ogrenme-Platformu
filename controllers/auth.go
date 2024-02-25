@@ -62,11 +62,7 @@ func Login(c *fiber.Ctx) error {
 }
 
 func Update(c *fiber.Ctx) error {
-	token := new(model.Update)
-	c.BodyParser(&token)
-	username, err := middleware.ExtractUsernameFromToken(token.Token)
-	if err != nil {
-		return c.Status(200).JSON(fiber.Map{"status": "faild", "message": "faild token", "data": err})
-	}
-	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "token success", "data": username})
+	
+
+	return nil
 }
