@@ -57,6 +57,7 @@ func Login(c *fiber.Ctx) error {
 	session.UserID = userdata.UserID
 	session.Token = token
 	db.Save(&session)
+	helpers.LogMessage(userdata.UserName, "- giriş yapti")
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "login success", "data": userdata, "token": token})
 
 }
