@@ -67,7 +67,10 @@ func Update(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "data": err})
 	}
-	log.Println(user)
+	
+
+
+
 
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "procces success", "data": user})
 }

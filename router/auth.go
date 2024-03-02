@@ -13,6 +13,6 @@ func Auth(app *fiber.App) {
 
 	user.Post("/", controllers.Singup)
 	user.Post("/login", controllers.Login)
-	user.Post("/update", controllers.Update)
+	user.Put("/", controllers.Update)
 
 }
