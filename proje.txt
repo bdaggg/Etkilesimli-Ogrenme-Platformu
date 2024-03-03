@@ -28,4 +28,3 @@ Hazır olan platformun demo sürümü ve belirtilen özelliklerin kullanımını
 # golang 
 # fiber
 # postgresql
-
