@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type User struct {
+type Personel struct {
 	gorm.Model
 	UserID   int    `gorm:"primaryKey;autoIncrement"`
 	Role     string `json:"role,omitempty"`

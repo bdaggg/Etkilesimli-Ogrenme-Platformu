@@ -1,1 +1,3 @@
-app.log
+/app.log
+/tmp/main.exe
+/tmo/build-errors.log

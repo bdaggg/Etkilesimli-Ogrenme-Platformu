@@ -12,8 +12,8 @@ func Auth(app *fiber.App) {
 	user := v1.Group("/user")
 
 	user.Get("/", controllers.Logout)
-	user.Post("/", controllers.Singup)
-	user.Post("/login", controllers.Login)
-	user.Put("/", controllers.UpdatePassword)
+	user.Post("/", controllers.SingupTeach)
+	user.Post("/login", controllers.LoginTeach)
+	user.Put("/", controllers.UpdatePasswordTeach)
 
 }
