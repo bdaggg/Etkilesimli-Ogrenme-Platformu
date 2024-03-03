@@ -38,6 +38,7 @@ func Connect() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("running migrations")
 	db.AutoMigrate(model.User{}, model.Session{})
+	db.AutoMigrate(model.TeacherQuestion{})
 	DB = Dbinstance{
 		Db: db,
 	}
