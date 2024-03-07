@@ -12,4 +12,5 @@ func Teach(app *fiber.App) {
 	teach := v1.Group("/taech")
 
 	teach.Post("/", controllers.AddQuestions)
+	//group.Get("/refresh-customers-from-netsis", controllers.CustomerController{Subject: "customer", Action: "update"}.RefreshCustomersFromNetsis)
 }

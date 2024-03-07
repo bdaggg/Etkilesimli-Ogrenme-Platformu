@@ -103,6 +103,9 @@ func Logout(c *fiber.Ctx) error {
 			return c.Status(402).JSON(fiber.Map{"status": "error", "message": "logout error"})
 		}
 	}
+	/*name := c.Locals("user").(model.Personel).UserName
+	log.Println(name) */
+	//yukarıdaki işlem log kaydı için name bilgisini tutar
 
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "logout success"})
 }
