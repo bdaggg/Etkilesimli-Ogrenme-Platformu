@@ -30,6 +30,7 @@ func SingupTeach(c *fiber.Ctx) error {
 		return c.Status(400).JSON(fiber.Map{"status": "error", "message": "mail used by another one", "data": err})
 	}
 
+	user.Password = helpers.HashPass(user.Password)
 	err = db.Create(&user).Error
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "server error was able to create new user try again", "data": err})
@@ -43,6 +44,7 @@ func LoginTeach(c *fiber.Ctx) error {
 	userdata := new(model.Personel)
 	db := database.DB.Db
 	c.BodyParser(&logindata)
+	logindata.Password = helpers.HashPass(logindata.Password)
 	err := db.Where("user_name = ? and password = ?", logindata.UserName, logindata.Password).First(&userdata).Error
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{"status": "faild", "message": "faild login"})
@@ -73,12 +75,13 @@ func UpdatePasswordTeach(c *fiber.Ctx) error {
 	}
 	var ChangePassword changePassword
 	c.BodyParser(&ChangePassword)
+	ChangePassword.OldPassword = helpers.HashPass(ChangePassword.OldPassword)
 	if user.Password != ChangePassword.OldPassword {
 		return c.Status(400).JSON(fiber.Map{"status": "faild", "message": "old password is false"})
 	}
-	user.Password = ChangePassword.NewPassword
+	user.Password = helpers.HashPass(ChangePassword.NewPassword)
 
-	err = database.DB.Db.Where("user_name=?", user.UserName).Update("password", user.Password).Error
+	err = database.DB.Db.Where("user_name=?", user.UserName).Updates(&user).Error
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{"status": "faild", "message": "faild login"})
 	}
